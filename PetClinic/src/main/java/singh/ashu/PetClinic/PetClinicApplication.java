@@ -11,10 +11,15 @@ public class PetClinicApplication {
 	public static void main(String[] args) {
 
 
+
 		ApplicationContext ctx= SpringApplication.run(PetClinicApplication.class, args);
 
-//		MyController ctrl=(MyController) ctx.getBean("myController");
-//		System.out.println(ctrl.sayHello());
+		MyController ctrl=(MyController) ctx.getBean("myController");
+
+		System.out.println(ctrl.saiHello());
+
+
 	}
+
 
 }
