@@ -1,10 +1,12 @@
 package singh.ashu.PetClinic.services.Map;
 
+import org.springframework.stereotype.Service;
 import singh.ashu.PetClinic.models.Owner;
 import singh.ashu.PetClinic.services.CrudService;
 
 import java.util.Set;
 
+@Service
 public class OwnerMapService extends AbstractMapService<Owner,Long> implements CrudService<Owner,Long> {
     @Override
     public Set<Owner> findAll() {
