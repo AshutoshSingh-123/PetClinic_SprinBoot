@@ -1,4 +1,7 @@
 package singh.ashu.PetClinic.services;
 
-public interface VetService {
+import singh.ashu.PetClinic.models.Vet;
+
+public interface VetService extends CrudService<Vet,Long>{
+
 }
