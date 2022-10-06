@@ -7,16 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="PetClinic" />
+        <module name="pet-clinic-web" />
+        <module name="pet-clinic-data" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="PetClinic" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="PetClinic" options="-parameters" />
+      <module name="PetClinic" options="" />
+      <module name="pet-clinic-data" options="-parameters" />
+      <module name="pet-clinic-web" options="-parameters" />
     </option>
   </component>
 </project>

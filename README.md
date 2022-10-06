@@ -73,3 +73,31 @@ Using Spring Boot
         Default:
 
                 @Profile({"EN","default"})
+
+6.Maven Release Plugin
+
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+    
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <configuration>
+                        <goals>install</goals>
+                    </configuration>
+                </plugin>
+            </plugins>
+    
+        </build>
+        <scm>
+            <developerConnection>scm:git:https://github.com/AshutoshSingh-123/PetClinic_SprinBoot.git</developerConnection>
+          <tag>HEAD</tag>
+        </scm>
+
+        Commands:
+                mvn release:prepare
+                mvn release:perform
