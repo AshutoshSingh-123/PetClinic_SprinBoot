@@ -1,4 +1,4 @@
-package singh.ashu.PetClinic;
+package singh.ashu.PetClinic.controllers;
 
 
 import org.springframework.stereotype.Controller;
