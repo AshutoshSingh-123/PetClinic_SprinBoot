@@ -13,24 +13,11 @@ import java.util.Set;
 @ResponseBody
 public class MyController {
 
-    private OwnerMapService ownerMapService;
-
-    public MyController(OwnerMapService ownerMapService) {
-        this.ownerMapService = ownerMapService;
-    }
 
 
 
 
 
-    @RequestMapping("/")
-    public Set<Owner> hello(){
-        Owner o1=new Owner();
-        o1.setFirstName("Ashu");
-        o1.setLastName("Singh");
-        o1.setId(2);
-        ownerMapService.save(o1);
-        System.out.println(ownerMapService.findAll());
-        return ownerMapService.findAll();
-    }
+
+
 }
