@@ -101,3 +101,48 @@ Using Spring Boot
         Commands:
                 mvn release:prepare
                 mvn release:perform
+
+
+7.Stereotype
+
+        --->Set of annotation Used for defining beans of particular type
+            .@Repository
+            .@Controller
+            .@RestController
+            .@Component
+            .@Service
+
+8. Configuration instead of using Strereotypes
+
+        --->create package config.
+        @Configuration
+       public class GreetingServiceConfig {
+
+          @Profile({"ES", "default"})
+          @Bean("i18nService")
+          I18NSpanishService i18NSpanishService(){
+             return new I18NSpanishService();
+         }
+
+         @Profile("EN")
+         @Bean
+         I18nEnglishGreetingService i18nService(){
+             return new I18nEnglishGreetingService();
+        }
+
+       @Primary
+       @Bean
+       PrimaryGreetingService primaryGreetingService(){
+             return new PrimaryGreetingService();
+       }
+
+        @Bean
+        ConstructorGreetingService constructorGreetingService(){
+             return new ConstructorGreetingService();
+        }
+       
+       }
+
+9. If files are not in same package as java Apllication.
+
+         --->@ComponentScan({"com.A","com.B"})

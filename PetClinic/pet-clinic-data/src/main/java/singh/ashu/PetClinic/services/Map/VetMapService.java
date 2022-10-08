@@ -1,11 +1,14 @@
 package singh.ashu.PetClinic.services.Map;
 
+import org.springframework.stereotype.Service;
 import singh.ashu.PetClinic.models.Vet;
-import singh.ashu.PetClinic.services.CrudService;
+
+import singh.ashu.PetClinic.services.VetService;
 
 import java.util.Set;
 
-public class VetMapService extends AbstractMapService<Vet,Long> implements CrudService<Vet,Long> {
+@Service
+public class VetMapService extends AbstractMapService<Vet,Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
