@@ -146,3 +146,30 @@ Using Spring Boot
 9. If files are not in same package as java Apllication.
 
          --->@ComponentScan({"com.A","com.B"})
+   10. External Properties
+
+            --->Hard coding values makes application rigid
+                  Ex: username,pass,url,paths, API keys
+
+                  application.properties:-
+                     ashu.name="Ashutosh Singh"
+
+                  ------>@PropertySource("aa.properties")
+                  Controller.java:-
+                       @RequestMapping({"","/list"})
+                       public String owner(Model model,@Value("${ashu.name}") String name ){
+
+                       model.addAttribute("owners",ownerMapService.findAll());
+                       System.out.println(name);
+                       return "owner/index";
+                      }
+11. External Propertu Hierarchy
+
+            CommandLineArg>>Enviroment VAr>> Application.properties
+
+            COmmandLine:
+                        --ashu.name=Ashutosh
+            Enviroment Var:
+                        ASHU_NAME=Ashutosh
+            application.properties
+                        ashu.name=Ashutosh
