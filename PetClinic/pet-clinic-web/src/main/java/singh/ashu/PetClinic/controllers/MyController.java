@@ -10,11 +10,14 @@ import singh.ashu.PetClinic.services.Map.OwnerMapService;
 import java.util.Set;
 
 @Controller
-@ResponseBody
+
 public class MyController {
 
 
-
+@RequestMapping("/")
+    public String index(){
+    return "index";
+}
 
 
 

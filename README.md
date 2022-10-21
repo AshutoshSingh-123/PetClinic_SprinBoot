@@ -173,3 +173,11 @@ Using Spring Boot
                         ASHU_NAME=Ashutosh
             application.properties
                         ashu.name=Ashutosh
+
+12. Internationalization
+
+            resources
+                messages
+                    messages.properties
+            .<h2 th:text="#{welcome}">Welcome</h2>
+            .spring.messages.basename=messages/messages
