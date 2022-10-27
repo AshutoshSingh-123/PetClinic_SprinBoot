@@ -14,7 +14,7 @@
 	</parent>
 	<groupId>singh.ashu</groupId>
 	<artifactId>PetClinic</artifactId>
-	<version>MapBasedCompleted</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>PetClinic</name>
 	<description>First real project</description>
 	<properties>
@@ -39,7 +39,7 @@
 	</build>
 	<scm>
 		<developerConnection>scm:git:https://github.com/AshutoshSingh-123/PetClinic_SprinBoot.git</developerConnection>
-	  <tag>PetClinic-MapBasedCompleted</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 
