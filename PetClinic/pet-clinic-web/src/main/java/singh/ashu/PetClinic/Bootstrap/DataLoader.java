@@ -3,10 +3,7 @@ package singh.ashu.PetClinic.Bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import singh.ashu.PetClinic.models.*;
-import singh.ashu.PetClinic.services.Map.OwnerMapService;
-import singh.ashu.PetClinic.services.Map.PetTypeMapService;
-import singh.ashu.PetClinic.services.Map.SpecilityMapService;
-import singh.ashu.PetClinic.services.Map.VetMapService;
+import singh.ashu.PetClinic.services.Map.*;
 
 import java.time.LocalDate;
 
@@ -18,11 +15,15 @@ public class DataLoader implements CommandLineRunner {
     private final PetTypeMapService petTypeMapService;
 
     private final SpecilityMapService specilityMapService;
-    public DataLoader(OwnerMapService ownerMapServiceServiceService, VetMapService vetMapServiceServiceService, PetTypeMapService petTypeMapService, SpecilityMapService specilityMapService) {
+
+    private final VisitMapService visitMapService;
+    public DataLoader(OwnerMapService ownerMapServiceServiceService, VetMapService vetMapServiceServiceService, PetTypeMapService petTypeMapService, SpecilityMapService specilityMapService, VetMapService vetMapService, VisitMapService visitMapService) {
         this.ownerMapServiceServiceService = ownerMapServiceServiceService;
         this.vetMapServiceServiceService = vetMapServiceServiceService;
         this.petTypeMapService = petTypeMapService;
         this.specilityMapService = specilityMapService;
+
+        this.visitMapService = visitMapService;
     }
 
 
@@ -40,6 +41,14 @@ public class DataLoader implements CommandLineRunner {
         PetType PT2=petTypeMapService.save(pt2);
 
         System.out.println("PetType loaded:"+petTypeMapService.findAll());
+
+        Visit visit1=new Visit();
+        visit1.setDate(LocalDate.now());
+        visit1.setDesc("This is first");
+        visitMapService.save(visit1);
+
+        System.out.println("this is visit:"+ visitMapService.findAll());
+
 
         Specility s1=new Specility();
         s1.setDesc("Dentist");
