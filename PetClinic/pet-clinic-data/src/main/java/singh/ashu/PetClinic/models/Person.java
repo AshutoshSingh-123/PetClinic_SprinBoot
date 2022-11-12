@@ -1,7 +1,14 @@
 package singh.ashu.PetClinic.models;
 
+import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 
 @MappedSuperclass
 public class Person extends BaseEntity {
@@ -13,19 +20,5 @@ public class Person extends BaseEntity {
 
 
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }
