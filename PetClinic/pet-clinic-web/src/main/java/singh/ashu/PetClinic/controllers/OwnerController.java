@@ -1,28 +1,28 @@
 package singh.ashu.PetClinic.controllers;
 
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import singh.ashu.PetClinic.services.Map.OwnerMapService;
+import singh.ashu.PetClinic.services.SDJService.OwnerSDJService;
 
 
 @RequestMapping("/owner")
 @Controller
 public class OwnerController {
 
-    private final OwnerMapService ownerMapService;
+    private final OwnerSDJService ownerSDJService;
 
-    public OwnerController(OwnerMapService ownerMapService) {
-        this.ownerMapService = ownerMapService;
+    public OwnerController(OwnerMapService ownerMapService, OwnerSDJService ownerSDJService) {
+        this.ownerSDJService = ownerSDJService;
+
     }
 
     @RequestMapping({"","/list"})
     public String owner(Model model ){
 
-        model.addAttribute("owners",ownerMapService.findAll());
+        model.addAttribute("owners",ownerSDJService.findAll());
 
         return "owner/index";
     }
