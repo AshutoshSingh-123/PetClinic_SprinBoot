@@ -49,8 +49,12 @@
             <span class="fa fa-home" aria-hidden="true"></span>
             <span>Home</span>
           </li>
+          <li th:replace="::menuItem ('/owner','owners',' owners','search','Owners')">
+            <span class="fa fa-search" aria-hidden="true"></span>
+            <span>Owners</span>
+          </li>
 
-          <li th:replace="::menuItem ('/owner/','owners','find owners','search','Find owners')">
+          <li th:replace="::menuItem ('/owner/find','owners','find owners','search','Find owners')">
             <span class="fa fa-search" aria-hidden="true"></span>
             <span>Find owners</span>
           </li>

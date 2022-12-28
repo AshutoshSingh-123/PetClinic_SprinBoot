@@ -1,6 +1,7 @@
 package singh.ashu.PetClinic.models;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,14 +29,15 @@ public class Pet  extends BaseEntity{
     }
 
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "type_id")
     private PetType petType;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "birth_date")
     private LocalDate birthDate;
 

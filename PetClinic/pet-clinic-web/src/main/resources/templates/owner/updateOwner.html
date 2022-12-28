@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Recipe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container ">
+  <div class="row ">
+    <div class="col-3"></div>
+    <div class="col-6 border m-3">
+      <h3 class="text-center">Add Owner</h3>
+      <br>
+      <form action="#" th:action="@{/owner/updateOwner/{id}(id=${owner.id})}" th:object="${owner}" method="post" >
+        <div class="row">
+
+
+          <div class="form-group col-6">
+            <label for="first_name">First Name</label>
+            <input type="text" th:value="${owner.firstName}" th:field="*{firstName}"  class="form-control form-control-sm" id="first_name" placeholder="first_name">
+          </div>
+          <div class="form-group col-6" >
+            <label for="last_name">Last Name</label>
+            <input type="text" th:value="${owner.lastName}" th:field="*{lastName}"  class="form-control form-control-sm" id="last_name" placeholder="last_name">
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="address">Address</label>
+            <input type="text" th:value="${owner.address}" th:field="*{address}"  class="form-control form-control-sm" id="address" placeholder="servings">
+          </div>
+          <div class="form-group col-6">
+            <label for="city">City</label>
+            <input type="text" th:value="${owner.city}" th:field="*{city}"  class="form-control form-control-sm" id="city" placeholder="source">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telephone">Telephone</label>
+          <input type="text" th:value="${owner.telephone}" th:field="*{telephone}"  class="form-control form-control-sm" id="telephone" placeholder="url">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

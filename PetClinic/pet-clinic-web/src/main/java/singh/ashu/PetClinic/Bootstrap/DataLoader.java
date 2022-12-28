@@ -3,12 +3,15 @@ package singh.ashu.PetClinic.Bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import singh.ashu.PetClinic.models.*;
+import singh.ashu.PetClinic.repository.OwnerRepository;
 import singh.ashu.PetClinic.services.Map.*;
 
 import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
+
+    private final OwnerRepository ownerRepository;
     private final OwnerMapService ownerMapServiceServiceService;
     private final VetMapService vetMapServiceServiceService;
 
@@ -17,7 +20,8 @@ public class DataLoader implements CommandLineRunner {
     private final SpecilityMapService specilityMapService;
 
     private final VisitMapService visitMapService;
-    public DataLoader(OwnerMapService ownerMapServiceServiceService, VetMapService vetMapServiceServiceService, PetTypeMapService petTypeMapService, SpecilityMapService specilityMapService, VetMapService vetMapService, VisitMapService visitMapService) {
+    public DataLoader(OwnerRepository ownerRepository, OwnerMapService ownerMapServiceServiceService, VetMapService vetMapServiceServiceService, PetTypeMapService petTypeMapService, SpecilityMapService specilityMapService, VetMapService vetMapService, VisitMapService visitMapService) {
+        this.ownerRepository = ownerRepository;
         this.ownerMapServiceServiceService = ownerMapServiceServiceService;
         this.vetMapServiceServiceService = vetMapServiceServiceService;
         this.petTypeMapService = petTypeMapService;
@@ -66,6 +70,7 @@ public class DataLoader implements CommandLineRunner {
         o1.setCity("Varansi");
         o1.setAddress("F2 B2 Mithila");
         o1.setTelephone("999999999");
+        ownerRepository.save(o1);
 
         Pet p1=new Pet();
         p1.setBirthDate(LocalDate.now());
@@ -84,6 +89,7 @@ public class DataLoader implements CommandLineRunner {
         o2.setCity("Patna");
         o2.setAddress("F2 B2 Mithila");
         o2.setTelephone("999999999");
+        ownerRepository.save(o2);
 
         Pet p2=new Pet();
         p2.setBirthDate(LocalDate.now());

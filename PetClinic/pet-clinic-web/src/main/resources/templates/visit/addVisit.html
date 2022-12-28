@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Recipe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container ">
+  <div class="row ">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <b>Pet Name: </b><span th:text="${pet.name}"> </span>&nbsp;&nbsp;&nbsp;
+      <b>Pet Type: </b><span th:text="${pet.petType}"> </span>&nbsp;&nbsp;&nbsp;
+      <b>Pet Owner: </b><span th:text="${pet.owner.firstName}"> </span>&nbsp;&nbsp;&nbsp;
+      <b>Pet DOB: </b><span th:text="${pet.birthDate}"> </span>&nbsp;&nbsp;
+    </div>
+  </div>
+  <hr>
+  <div class="row ">
+    <div class="col-3"></div>
+    <div class="col-6 border m-3">
+      <h3 class="text-center">Add Visit</h3>
+      <br>
+      <form action="#" th:action="@{/saveVisit}" th:object="${visit}" method="post" >
+        <div class="row">
+
+
+          <div class="form-group col-6">
+            <label for="first_name">Description</label>
+            <input type="text" th:field="*{desc}"  class="form-control form-control-sm" id="first_name" placeholder="first_name">
+          </div>
+          <div class="form-group col-6" >
+            <label for="birthDate"> Date</label>
+            <input type="date" th:field="*{date}"  class="form-control form-control-sm" id="birthDate" placeholder="last_name">
+          </div>
+        </div>
+
+
+        <div class="form-group col-6">
+
+          <input type="text" hidden  class="form-control form-control-sm" id="pid" name="pid" th:value="${pet.id}">
+        </div>
+
+
+
+
+
+
+        <button type="submit" class="btn btn-primary my-3">Submit</button>
+      </form>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h3 class="text-center">Previous Visits</h3>
+      <table class="table">
+        <thead>
+        <tr>
+
+          <th scope="col">Date</th>
+          <th scope="col">Description</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="visit: ${pet.visits}">
+          <td th:text="${visit.date}" />
+          <td th:text="${visit.desc}" />
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

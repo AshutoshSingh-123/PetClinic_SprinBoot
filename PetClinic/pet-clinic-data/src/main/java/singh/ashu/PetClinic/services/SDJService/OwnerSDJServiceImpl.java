@@ -38,4 +38,9 @@ public class OwnerSDJServiceImpl implements OwnerSDJService {
     public void deleteById(Long id) {
           ownerRepository.deleteById(id);
     }
+
+    @Override
+    public List<Owner> findByLastNameLikeIgnoreCase(String lastName) {
+        return ownerRepository.findByLastNameLikeIgnoreCase(lastName);
+    }
 }

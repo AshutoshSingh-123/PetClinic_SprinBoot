@@ -1,6 +1,5 @@
 package singh.ashu.PetClinic.services.SDJService;
 
-import singh.ashu.PetClinic.models.Owner;
 import singh.ashu.PetClinic.models.Pet;
 
 import java.util.List;

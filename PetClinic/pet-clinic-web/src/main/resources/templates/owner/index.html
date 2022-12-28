@@ -7,13 +7,16 @@
 </head>
 <body>
 <div class="container">
-    <h2>Owner's List</h2>
+    <span><b>Owner's List</b> </span>
+    <a class="btn btn-primary" th:href="@{/owner/add}">Add Owner</a>
     <table class="table table-striped" >
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">FirstName</th>
             <th scope="col">LastName</th>
+            <th scope="col"></th>
+
 
         </tr>
         </thead>
@@ -22,6 +25,10 @@
             <td th:text="${owner.id}" />
             <td th:text="${owner.firstName}" />
             <td th:text="${owner.lastName}" />
+
+            <td><a class="text-decoration-none"  th:href="@{/owner/view/{id}(id=${owner.id})}"><b class="text-success ">View</b></a></td>
+
+
         </tr>
 
         </tbody>

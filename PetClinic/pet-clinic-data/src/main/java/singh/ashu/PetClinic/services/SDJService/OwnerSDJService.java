@@ -11,4 +11,6 @@ public interface OwnerSDJService {
     void delete(Owner obj);
     void deleteById(Long id);
 
+    List<Owner> findByLastNameLikeIgnoreCase(String lastName);
+
 }
