@@ -101,3 +101,83 @@ Using Spring Boot
         Commands:
                 mvn release:prepare
                 mvn release:perform
+
+
+7.Stereotype
+
+        --->Set of annotation Used for defining beans of particular type
+            .@Repository
+            .@Controller
+            .@RestController
+            .@Component
+            .@Service
+
+8. Configuration instead of using Strereotypes
+
+        --->create package config.
+        @Configuration
+       public class GreetingServiceConfig {
+
+          @Profile({"ES", "default"})
+          @Bean("i18nService")
+          I18NSpanishService i18NSpanishService(){
+             return new I18NSpanishService();
+         }
+
+         @Profile("EN")
+         @Bean
+         I18nEnglishGreetingService i18nService(){
+             return new I18nEnglishGreetingService();
+        }
+
+       @Primary
+       @Bean
+       PrimaryGreetingService primaryGreetingService(){
+             return new PrimaryGreetingService();
+       }
+
+        @Bean
+        ConstructorGreetingService constructorGreetingService(){
+             return new ConstructorGreetingService();
+        }
+       
+       }
+
+9. If files are not in same package as java Apllication.
+
+         --->@ComponentScan({"com.A","com.B"})
+   10. External Properties
+
+            --->Hard coding values makes application rigid
+                  Ex: username,pass,url,paths, API keys
+
+                  application.properties:-
+                     ashu.name="Ashutosh Singh"
+
+                  ------>@PropertySource("aa.properties")
+                  Controller.java:-
+                       @RequestMapping({"","/list"})
+                       public String owner(Model model,@Value("${ashu.name}") String name ){
+
+                       model.addAttribute("owners",ownerMapService.findAll());
+                       System.out.println(name);
+                       return "owner/index";
+                      }
+11. External Propertu Hierarchy
+
+            CommandLineArg>>Enviroment VAr>> Application.properties
+
+            COmmandLine:
+                        --ashu.name=Ashutosh
+            Enviroment Var:
+                        ASHU_NAME=Ashutosh
+            application.properties
+                        ashu.name=Ashutosh
+
+12. Internationalization
+
+            resources
+                messages
+                    messages.properties
+            .<h2 th:text="#{welcome}">Welcome</h2>
+            .spring.messages.basename=messages/messages
