@@ -1,12 +1,18 @@
 package singh.ashu.PetClinic.controllers;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import singh.ashu.PetClinic.exceptions.NotFoundException;
 import singh.ashu.PetClinic.models.Owner;
 import singh.ashu.PetClinic.services.Map.OwnerMapService;
 import singh.ashu.PetClinic.services.SDJService.OwnerSDJService;
+
+import javax.validation.Valid;
 
 
 @RequestMapping("/owner")
@@ -35,7 +41,11 @@ public class OwnerController {
     }
 
     @PostMapping("/saveOwner")
-    public String save(@ModelAttribute Owner owner){
+    public String save(@Valid @ModelAttribute Owner owner, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+
+            return "owner/addOwner";
+        }
         ownerSDJService.save(owner);
         return "redirect:/owner";
     }
@@ -53,6 +63,7 @@ public class OwnerController {
 
     @GetMapping("/view/{id}")
     public String view(@PathVariable Long id, Model model){
+
         model.addAttribute("owner",ownerSDJService.findById(id));
         return "owner/viewOwner";
     }
@@ -68,4 +79,13 @@ public class OwnerController {
         return "owner/index";
 
     }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView notFound(Exception exception){
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.setViewName("404Error");
+        modelAndView.addObject("exception",exception);
+        return modelAndView;
+    }
+
 }

@@ -1,10 +1,12 @@
 package singh.ashu.PetClinic.services.SDJService;
 
 import org.springframework.stereotype.Service;
+import singh.ashu.PetClinic.exceptions.NotFoundException;
 import singh.ashu.PetClinic.models.Owner;
 import singh.ashu.PetClinic.repository.OwnerRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OwnerSDJServiceImpl implements OwnerSDJService {
@@ -21,6 +23,10 @@ public class OwnerSDJServiceImpl implements OwnerSDJService {
 
     @Override
     public Owner findById(Long id) {
+        Optional<Owner> owner=ownerRepository.findById(id);
+        if (!owner.isPresent()){
+            throw new NotFoundException("Owner Not Found with Id:"+id);
+        }
         return ownerRepository.findById(id).orElse(null);
     }
 

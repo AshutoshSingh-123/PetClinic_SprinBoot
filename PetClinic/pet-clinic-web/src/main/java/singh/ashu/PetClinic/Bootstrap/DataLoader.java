@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import singh.ashu.PetClinic.models.*;
 import singh.ashu.PetClinic.repository.OwnerRepository;
 import singh.ashu.PetClinic.services.Map.*;
+import singh.ashu.PetClinic.services.SDJService.SpecilitySDJService;
+import singh.ashu.PetClinic.services.SDJService.VetSDJService;
 
 import java.time.LocalDate;
 
@@ -20,7 +22,10 @@ public class DataLoader implements CommandLineRunner {
     private final SpecilityMapService specilityMapService;
 
     private final VisitMapService visitMapService;
-    public DataLoader(OwnerRepository ownerRepository, OwnerMapService ownerMapServiceServiceService, VetMapService vetMapServiceServiceService, PetTypeMapService petTypeMapService, SpecilityMapService specilityMapService, VetMapService vetMapService, VisitMapService visitMapService) {
+
+    private final VetSDJService vetSDJService;
+    SpecilitySDJService specilitySDJService;
+    public DataLoader(SpecilitySDJService specilitySDJService,OwnerRepository ownerRepository, OwnerMapService ownerMapServiceServiceService, VetMapService vetMapServiceServiceService, PetTypeMapService petTypeMapService, SpecilityMapService specilityMapService, VetMapService vetMapService, VisitMapService visitMapService, VetSDJService vetSDJService) {
         this.ownerRepository = ownerRepository;
         this.ownerMapServiceServiceService = ownerMapServiceServiceService;
         this.vetMapServiceServiceService = vetMapServiceServiceService;
@@ -28,6 +33,8 @@ public class DataLoader implements CommandLineRunner {
         this.specilityMapService = specilityMapService;
 
         this.visitMapService = visitMapService;
+        this.vetSDJService = vetSDJService;
+        this.specilitySDJService=specilitySDJService;
     }
 
 
@@ -69,7 +76,7 @@ public class DataLoader implements CommandLineRunner {
         o1.setLastName("Singh");
         o1.setCity("Varansi");
         o1.setAddress("F2 B2 Mithila");
-        o1.setTelephone("999999999");
+        o1.setTelephone("9999999999");
         ownerRepository.save(o1);
 
         Pet p1=new Pet();
@@ -88,7 +95,7 @@ public class DataLoader implements CommandLineRunner {
         o2.setLastName("Singh");
         o2.setCity("Patna");
         o2.setAddress("F2 B2 Mithila");
-        o2.setTelephone("999999999");
+        o2.setTelephone("9999999999");
         ownerRepository.save(o2);
 
         Pet p2=new Pet();
@@ -102,22 +109,35 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Owner Loaded:"+ownerMapServiceServiceService.findAll());
 
+        Specility sp1=new Specility("cancer");
+        Specility sp2=new Specility("diabaities");
+        specilitySDJService.save(sp1);
+        specilitySDJService.save(sp2);
         Vet v1=new Vet();
 //        v1.setId(vetMapServiceServiceService.getNextId());
         v1.setFirstName("V1");
         v1.setLastName("v1");
         v1.getSpecilities().add(S1);
+        v1.getSpecilities().add(sp1);
 
         vetMapServiceServiceService.save(v1);
+        vetSDJService.save(v1);
+
 
         Vet v2=new Vet();
 //        v2.setId(vetMapServiceServiceService.getNextId());
         v2.setFirstName("V2");
         v2.setLastName("v2");
         v2.getSpecilities().add(S2);
+        v2.getSpecilities().add(sp1);
+        v2.getSpecilities().add(sp2);
         vetMapServiceServiceService.save(v2);
+        vetSDJService.save(v2);
+
 
         System.out.println("Vet loaded:"+vetMapServiceServiceService.findAll());
+
+
 
 
     }

@@ -13,16 +13,17 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">FirstName</th>
-            <th scope="col">LastName</th>
+            <th scope="col">Name</th>
+            <th scope="col">Specialities</th>
 
         </tr>
         </thead>
         <tbody>
         <tr th:each="vet: ${vets}">
             <td th:text="${vet.id}" />
-            <td th:text="${vet.firstName}" />
-            <td th:text="${vet.lastName}" />
+            <td th:text="${vet.firstName}+ ' ' +${vet.lastName}" />
+            <td><span class="btn btn-primary" th:each="spec:${vet.specilities}" th:text="${spec.desc}+'  '"></span>
+            </td>
         </tr>
 
         </tbody>
